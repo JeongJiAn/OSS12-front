@@ -42,3 +42,12 @@ npm install react-native-gesture-handler react-native-reanimated
 //dropdown picker
 npm i react-native-dropdown-picker
 ```
+
+3. React native 시작
+```
+// Terminal 1
+npm start
+// Terminal 2 (new Terminal)
+react-native run-ios // for ios
+react-native run-android // for android
+```
