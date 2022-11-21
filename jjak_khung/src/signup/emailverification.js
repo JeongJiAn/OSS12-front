@@ -1,11 +1,9 @@
-import React, { Component, useState, useEffect, useCallback } from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
-import { useIsFocused } from '@react-navigation/native';
-import logo from '../../assets/images/khu-logo-01.png'
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image, Alert } from "react-native";
+import logo from '../../assets/image/khu-logo-01.png';
 
-function Emailverification(props) {
+function Emailverification (props) {
     const navigation = useNavigation();
     const serverUrl = props.serverUrl;
     const [verificationNumFailText, setVerificationNumFailText] = useState('');
@@ -14,14 +12,6 @@ function Emailverification(props) {
     let userEmail = '';
     let validKey = '';
     let validationNum = '';
-
-    function setUserEmail(email) {(
-        userEmail = email
-    )};
-
-    function setValidationNum(num) {(
-        validationNum = num
-    )}
 
     const getAuthMailApi = async () => {
         try {
@@ -53,7 +43,7 @@ function Emailverification(props) {
     const EmailBox = () => {
         return (
             <TextInput
-                onChangeText={(text) => setUserEmail(text)}
+                onChangeText={(text) => userEmail = text}
                 style={styles.emailBox}
                 placeholder='경희대학교 메일을 입력해주세요'
                 placeholderTextColor={'#B6C2D2'}
@@ -87,7 +77,7 @@ function Emailverification(props) {
     const VerificationNum = () => {
         return (
             <TextInput
-                onChangeText={(text) => setValidationNum(text)}
+                onChangeText={(text) => validationNum = text}
                 style={styles.verificationNum}
                 placeholder='인증번호'
                 placeholderTextColor='#B6C2D2'
@@ -163,7 +153,7 @@ function Emailverification(props) {
             </View>
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     emailverficationWrap: {

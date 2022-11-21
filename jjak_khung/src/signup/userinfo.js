@@ -1,9 +1,8 @@
-import React, { Component, useState } from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity, Alert } from "react-native";
 
-function Userinfo(props) {
+function UserInfo (props) {
     const userEmail = props.userEmail;
     const serverUrl = props.serverUrl;
     const navigation = useNavigation();
@@ -11,16 +10,6 @@ function Userinfo(props) {
     let userName = '';
     let pw = '';
     let rePw = '';
-
-    function setUserName(name) {
-        userName = name;
-    }
-    function setPw(password) {
-        pw = password;
-    }
-    function setRePw(rePassword) {
-        rePw = rePassword;
-    }
 
     const postJoinApi = async () => {
         try {
@@ -43,14 +32,14 @@ function Userinfo(props) {
             console.log(e);
             return false;
         }
-    }
+    };
 
     const UserNameBox = () => {
         return(
             <View style={{ marginTop:'15%' }}>
                 <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>Name</Text>
                 <TextInput 
-                    onChangeText={(text) => setUserName(text)}
+                    onChangeText={(text) => userName = text}
                     style={styles.userInputBox}
                     placeholder='ex홍길동'
                     placeholderTextColor='#B6C2D2'
@@ -78,7 +67,7 @@ function Userinfo(props) {
             <View style={{ marginTop:'10%' }}>
                 <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>PassWord</Text>
                 <TextInput 
-                    onChangeText={(text) => setPw(text)}
+                    onChangeText={(text) => pw = text}
                     style={styles.userInputBox}
                     autoCapitalize='none'
                     secureTextEntry={true}/>
@@ -95,7 +84,7 @@ function Userinfo(props) {
             <View style={{ marginTop:'5%' }}>
                 <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>PassWord Check</Text>
                 <TextInput 
-                    onChangeText={(text) => setRePw(text)}
+                    onChangeText={(text) => rePw = text}
                     style={styles.userInputBox}
                     autoCapitalize='none'
                     secureTextEntry={true}/>
@@ -127,7 +116,7 @@ function Userinfo(props) {
             } else {
                 Alert.alert(
                     '경고',
-                    '중복에러',
+                    '중복된 계정이 존재합니다.',
                     [
                         {
                             text: "확인",
@@ -148,7 +137,7 @@ function Userinfo(props) {
                 ]
             )
         }
-    }
+    };
 
     return(
         <ScrollView style={styles.signupWrap}>
@@ -159,7 +148,7 @@ function Userinfo(props) {
             <JoinButton/>
         </ScrollView>
     );
-};
+}
 
 const styles = StyleSheet.create({
     signupWrap:{
@@ -193,5 +182,4 @@ const styles = StyleSheet.create({
     }
 });
 
-
-export default Userinfo;
+export default UserInfo;

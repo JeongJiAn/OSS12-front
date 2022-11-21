@@ -1,17 +1,16 @@
-import React, { Component, useState, useEffect } from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View, Image, Text, Button, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import applogo from '../../assets/images/logo-04.png'
+import applogo from '../../assets/image/logo-04.png';
 
 function Signin (props) {
     const serverUrl = props.serverUrl;
     const navigation = useNavigation();
+    const [signinFailText, setSigninFailText] = useState('');
+    const isFocused = useIsFocused();
     let id = '';
     let pw = '';
-    const isFocused = useIsFocused();
-    const [signinFailText, setSigninFailText] = useState('');
     let loginResponse = false;
     let userInfoResponse = { roleList: [], user_id: "", user_name: "", user_number: -1, user_password: "", user_point: -1, user_recom: -1, user_roles: "" };
     let signinResult = false;
@@ -57,14 +56,6 @@ function Signin (props) {
         }
     };
 
-    function SetId (_id) {
-        id = _id;
-    };
-
-    function SetPw (_pw) {
-        pw = _pw;
-    };
-
     const trySignIn = async () => {
         await postSigninApi();
         if (loginResponse === true) {
@@ -92,7 +83,7 @@ function Signin (props) {
                 maxLength={16}
                 autoCapitalize={'none'}
                 editable={true}
-                onChangeText={(text) => SetId(text)}
+                onChangeText={(text) => id = text}
             />
         );
     };
@@ -106,7 +97,7 @@ function Signin (props) {
                 maxLength={16}
                 autoCapitalize={'none'}
                 editable={true}
-                onChangeText={(text) => SetPw(text)}
+                onChangeText={(text) => pw = text}
                 secureTextEntry={true}
             />
         );
@@ -142,8 +133,7 @@ function Signin (props) {
         )
     }
 
-    const subjectList = props.subjectList;
-    return (
+    return(
         <View style={styles.signinWrap}>
             <Image
                 style={styles.logo}
@@ -156,7 +146,7 @@ function Signin (props) {
             <SigninButton/>
             <SignupButton/>
         </View>
-    );
+    )
 };
 
 const styles = StyleSheet.create({
