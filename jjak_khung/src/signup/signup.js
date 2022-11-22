@@ -1,6 +1,4 @@
-import React, { Component, useState } from 'react';
-import { StyleSheet, View, Text, ImagePickerIOS } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Emailverification from './emailverification';
 import Userinfo from './userinfo';
@@ -22,4 +20,5 @@ function Signup(props){
         </Stack.Navigator>
     );  
 };
+
 export default Signup;
