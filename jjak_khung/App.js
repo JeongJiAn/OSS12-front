@@ -5,12 +5,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Signin from './src/signin/signin';
 import Signup from './src/signup/signup';
 import Termtime from './src/termtime/termtime';
+import Entrytime from './src/entrytime/entrytime';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   const serverUrl = 'http://localhost:8080/';
-  const entryDeadline = {m: 9, d: 7};
+  const entryDeadline = {m: 9, d: 7}; // 9 7
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -60,6 +61,15 @@ const App = () => {
         </Stack.Screen>
         <Stack.Screen name="signup">
           {props => <Signup serverUrl={serverUrl} />}
+        </Stack.Screen>
+        <Stack.Screen name="entrytime" options={{headerShown: false}}>
+          {props => (
+            <Entrytime
+              subjectList={subjectList}
+              userInfo={userInfo}
+              serverUrl={serverUrl}
+            />
+          )}
         </Stack.Screen>
         <Stack.Screen name="termtime" options={{headerShown: false}}>
           {props => <Termtime userInfo={userInfo} serverUrl={serverUrl} />}
