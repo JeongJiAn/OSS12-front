@@ -19,6 +19,7 @@ function Emailverification (props) {
                 throw new Error('not khu email domain');
             }
             const callUrl = serverUrl + 'authmail?email=' + userEmail;
+            console.log(callUrl);
             const authmailReaponse = await fetch(callUrl);
             if (!authmailReaponse.ok) {
                 throw new Error('400 or 500 error occurred');

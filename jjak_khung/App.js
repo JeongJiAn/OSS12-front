@@ -8,7 +8,7 @@ import Signup from './src/signup/signup';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const serverUrl = 'http://localhost:8080/';
+  const serverUrl = 'http://127.0.0.1:8080/';
   const entryDeadline = { m: 9, d: 7 };
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');
