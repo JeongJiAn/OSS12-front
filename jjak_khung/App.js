@@ -6,6 +6,7 @@ import Signin from './src/signin/signin';
 import Signup from './src/signup/signup';
 import Termtime from './src/termtime/termtime';
 import Entrytime from './src/entrytime/entrytime';
+import Chatroom from './src/chatroom/chatroom';
 
 const Stack = createNativeStackNavigator();
 

@@ -11,8 +11,9 @@ import {useWindowDimensions} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import ChatroomMain from './chatroommain';
 import MemberList from './memberlist';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
 function Chatroom(props) {
   const route = useRoute();
@@ -28,20 +29,8 @@ function Chatroom(props) {
   }, []);
 
   return (
-    <Drawer.Navigator
-      useLegacyImplementation={true}
-      initialRouteName="chatroommain"
-      defaultStatus="closed"
-      screenOptions={{
-        drawerType: isLargeScreen ? 'permanent' : 'front',
-        drawerStyle: isLargeScreen ? null : {width: '50%'},
-        overlayColor: 'transparent',
-        drawerPosition: 'right',
-      }}
-      drawerContent={props => (
-        <MemberList chat_number={chatroom.chat_number} serverUrl={serverUrl} />
-      )}>
-      <Drawer.Screen name="chatroommain" options={{headerShown: false}}>
+    <Stack.Navigator initialRouteName="chatroommain">
+      <Stack.Screen name="chatroommain" options={{headerShown: false}}>
         {props => (
           <ChatroomMain
             chatroom={chatroom}
@@ -49,16 +38,16 @@ function Chatroom(props) {
             userInfo={userInfo}
           />
         )}
-      </Drawer.Screen>
-      <Drawer.Screen name="memberlist" options={{headerShown: false}}>
+      </Stack.Screen>
+      <Stack.Screen name="memberlist" options={{headerShown: false}}>
         {props => (
           <MemberList
             chat_number={chatroom.chat_number}
             serverUrl={serverUrl}
           />
         )}
-      </Drawer.Screen>
-    </Drawer.Navigator>
+      </Stack.Screen>
+    </Stack.Navigator>
   );
 }
 
