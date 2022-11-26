@@ -12,10 +12,11 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const serverUrl = 'http://localhost:8080/';
-  const entryDeadline = {m: 9, d: 7}; // 9 7
+  const entryDeadline = {m: 12, d: 7}; // 9 7
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [subjectList, setSubjectList] = useState([]);
   const [userInfo, setUserInfo] = useState({
     user_name: '',
     user_point: -1,
@@ -34,6 +35,17 @@ const App = () => {
     } else {
       setSemTime('termtime');
     }
+    const getSubjectListApi = async () => {
+      try {
+        const callUrl = serverUrl + 'board/subject/list';
+        const subjectListResponse = await fetch(callUrl);
+        const subjectListJson = await subjectListResponse.json();
+        setSubjectList(subjectListJson);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getSubjectListApi();
   }, []);
 
   function UserSignin(user) {

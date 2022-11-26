@@ -207,9 +207,7 @@ function ChatList(props) {
             <TouchableOpacity
               style={styles.mentorChatroomListTitle}
               onPress={() => handleMentorChatroomButton()}>
-              <Text style={{fontSize: 20, marginLeft: '7%%'}}>
-                ▾멘토 채팅방
-              </Text>
+              <Text style={{fontSize: 20, marginLeft: '7%'}}>▾멘토 채팅방</Text>
             </TouchableOpacity>
             <MentorChatroomList />
           </View>
