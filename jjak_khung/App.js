@@ -7,6 +7,7 @@ import Signup from './src/signup/signup';
 import Termtime from './src/termtime/termtime';
 import Entrytime from './src/entrytime/entrytime';
 import Chatroom from './src/chatroom/chatroom';
+import allsubject from './src/json/subject.json';
 
 const Stack = createNativeStackNavigator();
 

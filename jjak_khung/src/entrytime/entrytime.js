@@ -8,14 +8,15 @@ import SearchChatListbySubject from './searchchatlistbysubject';
 import SearchChatListbyProf from './searchchatlistbyprof';
 import SearchResult from './searchresult';
 import MentorEntry from './mentorentry';
-import SubjectList from './../json/subject.json';
+import AllSubjectList from './../json/subject.json';
 
 const Stack = createNativeStackNavigator();
 
 function Entrytime(props) {
   const userInfo = props.userInfo;
   const serverUrl = props.serverUrl;
-  const subjectList = props.subjectList;
+  //const subjectList = props.subjectList; 잠깐 지움 temp 교체
+  const subjectList = AllSubjectList.subjectList;
   const isFocused = useIsFocused();
   const [chatrooms, setChatrooms] = useState([]);
   const [mentorChatroomList, setMentorChatroomList] = useState([]);
