@@ -57,21 +57,21 @@ function Signin (props) {
     };
 
     const trySignIn = async () => {
-        await postSigninApi();
-        if (loginResponse === true) {
-            await getUserInfoApi();
-            const userInfo = userInfoResponse;
-            await props.UserSignin(userInfo);
+        // await postSigninApi();
+        // if (loginResponse === true) {
+            // await getUserInfoApi();
+            // const userInfo = userInfoResponse;
+            // await props.UserSignin(userInfo);
             if (props.semTime === 'entrytime'){
                 navigation.navigate('entrytime');
             } else if (props.semTime === 'termtime') {
                 navigation.navigate('termtime');
             }
-        } else {
-            signinResult = false;
-            alert('로그인 실패');
-            setSigninFailText('아이디 또는 비밀번호가 일치하지 않습니다.');
-        }
+        // } else {
+        //     signinResult = false;
+        //     alert('로그인 실패');
+        //     setSigninFailText('아이디 또는 비밀번호가 일치하지 않습니다.');
+        // }
     };
 
     function IdInput () {
