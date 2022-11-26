@@ -60,7 +60,6 @@ function Termtime(props) {
   useEffect(() => {
     getChatUserApi();
   }, [isFocused]);
-  console.log('termtime-before return');
 
   return (
     <ChatList
