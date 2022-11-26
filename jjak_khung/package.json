@@ -10,6 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@react-native-community/slider": "^4.3.3",
+>>>>>>> 14708311788b96d330e0bbf8c30f1fbe098ac627
     "@react-navigation/drawer": "^6.5.0",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.1",
