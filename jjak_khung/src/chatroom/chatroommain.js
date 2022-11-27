@@ -62,11 +62,11 @@ function ChatroomMain(props) {
             }}>
             <Text style={{color: '#ffffff', fontSize: 30}}>채팅방</Text>
           </View>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={styles.memberListButton}
-            onPress={() => navigation.toggleDrawer()}>
+            onPress={() => navigation.navigate('ToggleDrawer')}>
             <Text style={{color: '#ffffff', fontSize: 30}}>=</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
         </View>
       </View>
     );

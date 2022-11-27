@@ -14,7 +14,7 @@ import MemberList from './memberlist';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
-
+const Drawer = createDrawerNavigator();
 function Chatroom(props) {
   const route = useRoute();
   const serverUrl = props.serverUrl;
@@ -28,6 +28,21 @@ function Chatroom(props) {
     setChatroom(route.params);
   }, []);
 
+  function ToggleDrawer() {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="memberlist" options={{headerShown: false}}>
+          {props => (
+            <MemberList
+              chat_number={chatroom.chat_number}
+              serverUrl={serverUrl}
+            />
+          )}
+        </Drawer.Screen>
+      </Drawer.Navigator>
+    );
+  }
+
   return (
     <Stack.Navigator initialRouteName="chatroommain">
       <Stack.Screen name="chatroommain" options={{headerShown: false}}>
@@ -39,14 +54,11 @@ function Chatroom(props) {
           />
         )}
       </Stack.Screen>
-      <Stack.Screen name="memberlist" options={{headerShown: false}}>
-        {props => (
-          <MemberList
-            chat_number={chatroom.chat_number}
-            serverUrl={serverUrl}
-          />
-        )}
-      </Stack.Screen>
+      <Stack.Screen
+        name="ToggleDrawer"
+        component={ToggleDrawer}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
