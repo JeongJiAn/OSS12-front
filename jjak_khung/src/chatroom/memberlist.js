@@ -15,7 +15,6 @@ function MemberList(props) {
       try {
         const callUrl =
           serverUrl + 'chat/room/list?chatNumber=' + props.chat_number;
-        console.log(callUrl);
         const getChatRoomListResponse = await fetch(callUrl);
         const getChatRoomListJson = await getChatRoomListResponse.json();
         let tempMemberList = [];
