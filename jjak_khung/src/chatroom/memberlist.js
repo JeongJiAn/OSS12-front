@@ -8,7 +8,26 @@ import {StyleSheet, View, Text} from 'react-native';
 
 function MemberList(props) {
   const serverUrl = props.serverUrl;
-  const [memberList, setMemberList] = useState([]);
+  // 임시 데이터
+  let tempUser = [
+    {
+      user_info: {
+        user_number: 1,
+        user_name: '이혜미',
+      },
+      mentor_check: '이건뭐지?',
+      last_check_time: '아무튼 임시 데이터에요',
+    },
+    {
+      user_info: {
+        user_number: 2,
+        user_name: '손동현',
+      },
+      mentor_check: '프론트?',
+      last_check_time: '아무튼 임시 데이터에요',
+    },
+  ];
+  const [memberList, setMemberList] = useState(tempUser); // [] => tempUser (임시로)
 
   useEffect(() => {
     const getChatRoomList = async () => {

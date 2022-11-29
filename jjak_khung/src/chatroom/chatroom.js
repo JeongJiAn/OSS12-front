@@ -22,30 +22,27 @@ function Chatroom(props) {
   const isLargeScreen = dimensions.width >= 768;
   const navigation = useNavigation();
   const userInfo = props.userInfo;
-  const [chatroom, setChatroom] = useState();
+  const [chatroom, setChatroom] = useState([]);
 
   useEffect(() => {
     setChatroom(route.params);
   }, []);
 
-  function ToggleDrawer() {
-    return (
-      <Drawer.Navigator>
-        <Drawer.Screen name="memberlist" options={{headerShown: false}}>
-          {props => (
-            <MemberList
-              chat_number={chatroom.chat_number}
-              serverUrl={serverUrl}
-            />
-          )}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    );
-  }
-
   return (
-    <Stack.Navigator initialRouteName="chatroommain">
-      <Stack.Screen name="chatroommain" options={{headerShown: false}}>
+    <Drawer.Navigator
+      useLegacyImplementation={true}
+      initialRouteName="chatroommain"
+      defaultStatus="closed"
+      screenOptions={{
+        drawerType: isLargeScreen ? 'permanent' : 'front',
+        drawerStyle: isLargeScreen ? null : {width: '50%'},
+        overlayColor: 'transparent',
+        drawerPosition: 'right',
+      }}
+      drawerContent={props => (
+        <MemberList chat_number={chatroom.chat_number} serverUrl={serverUrl} />
+      )}>
+      <Drawer.Screen name="chatroommain" options={{headerShown: false}}>
         {props => (
           <ChatroomMain
             chatroom={chatroom}
@@ -53,13 +50,16 @@ function Chatroom(props) {
             userInfo={userInfo}
           />
         )}
-      </Stack.Screen>
-      <Stack.Screen
-        name="ToggleDrawer"
-        component={ToggleDrawer}
-        options={{headerShown: false}}
-      />
-    </Stack.Navigator>
+      </Drawer.Screen>
+      <Drawer.Screen name="memberlist" options={{headerShown: false}}>
+        {props => (
+          <MemberList
+            chat_number={chatroom.chat_number}
+            serverUrl={serverUrl}
+          />
+        )}
+      </Drawer.Screen>
+    </Drawer.Navigator>
   );
 }
 

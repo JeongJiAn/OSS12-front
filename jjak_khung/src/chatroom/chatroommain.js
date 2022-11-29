@@ -64,7 +64,7 @@ function ChatroomMain(props) {
           </View>
           <TouchableOpacity
             style={styles.memberListButton}
-            onPress={() => navigation.navigate('ToggleDrawer')}>
+            onPress={() => navigation.openDrawer()}>
             <Text style={{color: '#ffffff', fontSize: 30}}>=</Text>
           </TouchableOpacity>
         </View>
