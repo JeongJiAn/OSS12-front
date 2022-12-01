@@ -12,7 +12,7 @@ import allsubject from './src/json/subject.json';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const serverUrl = 'http://127.0.0.1:4000/';
+  const serverUrl = 'http://localhost:8080/'; //api 오류시 터미널에  adb reverse tcp:8080 tcp:8080 입력
   const entryDeadline = {m:9, d: 7}; // 9 7
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');
