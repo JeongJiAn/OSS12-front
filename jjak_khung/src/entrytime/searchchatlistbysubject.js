@@ -15,7 +15,6 @@ import allSubjectList from './../json/subject.json';
 
 function SearchChatListbySubject(props) {
   const navigation = useNavigation();
-  //const subjectList = props.subjectList; // 잠깐 지움 대신 임시로 allSubjectList.subjectList로 변경
   const subjectList = allSubjectList.subjectList;
   const [subjectNameList, setSubjectNameList] = useState([]);
 
