@@ -3,6 +3,8 @@ package com.jjak_khung;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.facebook.react.bridge.JSIModulePackage;
+import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {

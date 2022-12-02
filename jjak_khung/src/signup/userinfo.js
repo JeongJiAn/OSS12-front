@@ -72,7 +72,7 @@ function UserInfo (props) {
                     autoCapitalize='none'
                     secureTextEntry={true}/>
                 <Text 
-                    style={{ width:'85%' ,marginLeft: '7%%', fontSize: 14, color: '#BC0000' }}>
+                    style={{ width:'85%' ,marginLeft: '7%', fontSize: 14, color: '#BC0000' }}>
                         비밀번호는 영문,숫자,특수기호 중 한가지 이상으로 구성되어야 하며 8~16자리 여야 합니다.
                 </Text>
             </View>
