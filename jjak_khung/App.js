@@ -12,7 +12,7 @@ import allsubject from './src/json/subject.json';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const serverUrl = 'http://localhost:8080/';
+  const serverUrl = 'http://107.21.124.128:8080/';
   const entryDeadline = {m: 12, d: 7}; // 9 7
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');

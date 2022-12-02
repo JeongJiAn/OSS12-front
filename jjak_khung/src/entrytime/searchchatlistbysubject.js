@@ -15,7 +15,7 @@ import allSubjectList from './../json/subject.json';
 
 function SearchChatListbySubject(props) {
   const navigation = useNavigation();
-  const subjectList = allSubjectList.subjectList;
+  const subjectList = props.subjectList;
   const [subjectNameList, setSubjectNameList] = useState([]);
 
   function makeSubjectNameList() {
