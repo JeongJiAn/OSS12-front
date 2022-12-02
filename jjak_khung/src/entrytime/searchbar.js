@@ -13,7 +13,12 @@ function SearchBar(props) {
         onPress={() => {
           props.navigation.navigate('searchchatlistbysubject');
         }}>
-        <Text style={{fontSize: 18, color: '#3E3F42', marginLeft: 10}}>
+        <Text
+          style={{
+            fontSize: 18,
+            color: '#3E3F42',
+            marginLeft: 10,
+          }}>
           과목선택하러 가기
         </Text>
         <Text style={{fontSize: 18, color: '#3E3F42', marginRight: 10}}>⇨</Text>
@@ -24,8 +29,9 @@ function SearchBar(props) {
 
 const styles = StyleSheet.create({
   searchButtonWrap: {
+    paddingTop: '5%',
     width: '100%',
-    height: 39,
+    height: 70,
     paddingHorizontal: '7%',
     display: 'flex',
     alignItems: 'center',
