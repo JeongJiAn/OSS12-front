@@ -42,6 +42,7 @@ function SearchChatListbySubject(props) {
 
   return (
     <FlatList
+      style={styles.chatlistSubjectWrap}
       keyExtractor={item => item.toString()}
       data={subjectNameList}
       renderItem={({item}) => (
@@ -61,10 +62,8 @@ function SearchChatListbySubject(props) {
 const styles = StyleSheet.create({
   chatlistSubjectWrap: {
     width: '100%',
-    height: '100%',
     paddingLeft: '7%',
     paddingRight: '7%',
-    paddingTop: '15%',
     backgroundColor: '#f8f9ff',
   },
   subjectWrap: {
