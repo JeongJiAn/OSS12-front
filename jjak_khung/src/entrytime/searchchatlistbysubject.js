@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {
@@ -40,19 +41,20 @@ function SearchChatListbySubject(props) {
   }, []);
 
   return (
-    <ScrollView style={styles.chatlistSubjectWrap}>
-      {subjectNameList.map((subject, i) => (
+    <FlatList
+      keyExtractor={item => item.toString()}
+      data={subjectNameList}
+      renderItem={({item}) => (
         <TouchableOpacity
-          key={i}
           style={styles.subjectWrap}
           onPress={() => {
-            props.setSubject(subject);
+            props.setSubject(item);
             navigation.navigate('searchchatlistbyprof');
           }}>
-          <Text style={styles.subjectText}>{subject}</Text>
+          <Text style={styles.subjectText}>{item}</Text>
         </TouchableOpacity>
-      ))}
-    </ScrollView>
+      )}
+    />
   );
 }
 
