@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useIsFocused} from '@react-navigation/native';
-import chatrooms from './../json/chatrooms.json';
+//for test
+import chatrooms from './../chatroom/chatroomTest';
 
 function ChatList(props) {
   const isFocused = useIsFocused();
@@ -185,7 +186,7 @@ function ChatList(props) {
             <TouchableOpacity
               stlye={styles.menteeChatroomListTitle}
               onPress={() => handleMenteeChatroomButton()}>
-              <Text style={{fontSize: 20, marginLeft: '7%'}}>▾멘티 채팅방</Text>
+              <Text style={{fontSize: 20, marginLeft: '7%'}}>▾멘티 채팅방멘티 채팅방</Text>
             </TouchableOpacity>
             <MenteeChatroomList />
           </View>
