@@ -59,6 +59,8 @@ react-native run-android // for android
 ## usage
 #### Flow Chart
 ![2](https://user-images.githubusercontent.com/56192209/186589396-cd79a440-dfc0-4bdc-b202-0f18c866481b.png)
+![flow chart](https://user-images.githubusercontent.com/113916318/205669810-8458f053-1d2b-4b43-b818-8a6760f3c9fb.png)
+
 #### E-R Diagram
 ![image](https://user-images.githubusercontent.com/56192209/186586905-ba191f88-b1a7-4fb9-8d86-39c5089b1e58.png)
 
