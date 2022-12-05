@@ -15,8 +15,8 @@ const Stack = createNativeStackNavigator();
 function Entrytime(props) {
   const userInfo = props.userInfo;
   const serverUrl = props.serverUrl;
-  //const subjectList = props.subjectList; 잠깐 지움 temp 교체
-  const subjectList = AllSubjectList.subjectList;
+  const subjectList = props.subjectList;
+
   const isFocused = useIsFocused();
   const [chatrooms, setChatrooms] = useState([]);
   const [mentorChatroomList, setMentorChatroomList] = useState([]);

@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {
@@ -15,8 +16,7 @@ import allSubjectList from './../json/subject.json';
 
 function SearchChatListbySubject(props) {
   const navigation = useNavigation();
-  //const subjectList = props.subjectList; // 잠깐 지움 대신 임시로 allSubjectList.subjectList로 변경
-  const subjectList = allSubjectList.subjectList;
+  const subjectList = props.subjectList;
   const [subjectNameList, setSubjectNameList] = useState([]);
 
   function makeSubjectNameList() {
@@ -41,29 +41,29 @@ function SearchChatListbySubject(props) {
   }, []);
 
   return (
-    <ScrollView style={styles.chatlistSubjectWrap}>
-      {subjectNameList.map((subject, i) => (
+    <FlatList
+      style={styles.chatlistSubjectWrap}
+      keyExtractor={item => item.toString()}
+      data={subjectNameList}
+      renderItem={({item}) => (
         <TouchableOpacity
-          key={i}
           style={styles.subjectWrap}
           onPress={() => {
-            props.setSubject(subject);
+            props.setSubject(item);
             navigation.navigate('searchchatlistbyprof');
           }}>
-          <Text style={styles.subjectText}>{subject}</Text>
+          <Text style={styles.subjectText}>{item}</Text>
         </TouchableOpacity>
-      ))}
-    </ScrollView>
+      )}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   chatlistSubjectWrap: {
     width: '100%',
-    height: '100%',
     paddingLeft: '7%',
     paddingRight: '7%',
-    paddingTop: '15%',
     backgroundColor: '#f8f9ff',
   },
   subjectWrap: {

@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
-import applogo from '../../assets/image/logo-04.png';
+import applogo from '../../assets/image/khu_logo5.png';
 
 function Signin(props) {
   const serverUrl = props.serverUrl;
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '100%',
-    height: 280,
+    height: 250,
   },
   idInput: {
     width: '80%',
