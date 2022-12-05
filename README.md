@@ -1,20 +1,22 @@
 # OSS12-front
 2022 오픈소스SW개발 프로젝트 12조 frontend
 
-## Description
-- 프로젝트 소개
-    - 경희대학교 선후배 멘토링 서비스 어플리케이션
-    - 채팅, 게시판 서비스 제공
----
-## Software architecture
-![image](https://user-images.githubusercontent.com/56192209/186587539-60727a37-08da-4803-8f8f-0b92d28a391b.png) <br>
-## E-R Diagram
-![image](https://user-images.githubusercontent.com/56192209/186586905-ba191f88-b1a7-4fb9-8d86-39c5089b1e58.png)
-## Flow Chart
-![2](https://user-images.githubusercontent.com/56192209/186589396-cd79a440-dfc0-4bdc-b202-0f18c866481b.png)
 
----
-## Getting Started / Installation
+## About the project
+프로젝트 소개:
+* 스프트웨어융합대학 선후배 멘토링 서비스 어플리케이션
+* 채팅, 게시판 서비스 제공
+* 멘토와 멘티 간의 1:n 채팅 서비스
+<br>
+짝 KHU웅은  React-Native와 Spring으로 구현한 프로젝트입니다.
+채팅 기능을 이용한 멘토-멘티 커뮤니티 어플리케이션으로 자신이 듣는 수업의 개설된 멘토방에 들어가 소통할 수 있습니다.
+또한 소융대 학생들의 적극적인 이용을 기대하고자 크레딧 기능을 활용하였습니다.
+
+#### Software architecture
+![image](https://user-images.githubusercontent.com/56192209/186587539-60727a37-08da-4803-8f8f-0b92d28a391b.png) <br>
+
+
+## Getting Started(Installation)
 - BE : Spring (자바 11, gradle)
 - FE : React Native (npm 8.15.0, react native 0.68.2)
 1. DB 구축
@@ -51,3 +53,20 @@ npm start
 react-native run-ios // for ios
 react-native run-android // for android
 ```
+
+   
+   
+## usage
+#### Flow Chart
+![2](https://user-images.githubusercontent.com/56192209/186589396-cd79a440-dfc0-4bdc-b202-0f18c866481b.png)
+#### E-R Diagram
+![image](https://user-images.githubusercontent.com/56192209/186586905-ba191f88-b1a7-4fb9-8d86-39c5089b1e58.png)
+
+
+
+## Roadmap
+- [x] UI Change
+- [x] Add Chatroom
+- [x] Add Login Application
+- [x] Add Subject List
+
