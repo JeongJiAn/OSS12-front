@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const serverUrl = 'http://107.21.124.128:8080/';
-  const entryDeadline = {m: 12, d: 30}; // 9 7
+  const entryDeadline = {m: 9, d: 7}; // 9 7
   const [semTime, setSemTime] = useState('');
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
