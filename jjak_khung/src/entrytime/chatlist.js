@@ -19,10 +19,8 @@ function ChatList(props) {
   const forceUpdate = useCallback(() => updateState({}), []);
   const [mentorPressed, setMentorPressed] = useState(true);
   const [menteePressed, setMenteePressed] = useState(true);
-  //let mentorChatroomList = props.mentorChatroomList;
-  //let menteeChatroomList = props.menteeChatroomList;
-  let mentorChatroomList = chatrooms.chatrooms; //temp
-  let menteeChatroomList = chatrooms.chatrooms; //temp
+  let mentorChatroomList = props.mentorChatroomList;
+  let menteeChatroomList = props.menteeChatroomList;
 
   function helpMsg() {
     const msg = '\n문의는 아래의 메일로 부탁드립니다.\njjak_khung@khu.ac.kr\n';

@@ -18,10 +18,8 @@ function ChatList(props) {
   const [mentorPressed, setMentorPressed] = useState(true);
   const [menteePressed, setMenteePressed] = useState(true);
   const [selectedChatroom, setSelectedChatroom] = useState();
-  //let mentorChatroomList = props.mentorChatroomList;
-  //let menteeChatroomList = props.menteeChatroomList;
-  let mentorChatroomList = chatrooms.chatrooms; //temp
-  let menteeChatroomList = chatrooms.chatrooms; //temp
+  let mentorChatroomList = props.mentorChatroomList;
+  let menteeChatroomList = props.menteeChatroomList;
 
   useState(() => {
     setSelectedChatroom();
