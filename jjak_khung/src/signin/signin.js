@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '100%',
-    height: 280,
+    height: 250,
   },
   idInput: {
     width: '80%',
