@@ -110,7 +110,7 @@ function ChatroomMain(props) {
       <View style={styles.othersChatWrap}>
         <View
           style={{backgroundColor: 'red', padding: 5, alignSelf: 'flex-start'}}>
-          <Text>msg.name</Text>
+          <Text>{msg.name}</Text>
         </View>
         <View style={styles.othersChat}>
           <Text>
