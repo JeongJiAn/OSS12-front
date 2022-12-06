@@ -62,7 +62,7 @@ Application의 경우 .apk파일을 실행해주면
 ![flow chart](https://user-images.githubusercontent.com/113916318/205669810-8458f053-1d2b-4b43-b818-8a6760f3c9fb.png)
 
 #### E-R Diagram
-![image](https://user-images.githubusercontent.com/56192209/186586905-ba191f88-b1a7-4fb9-8d86-39c5089b1e58.png)
+![er](https://user-images.githubusercontent.com/72684838/205894987-82a47000-20c8-427d-8365-006f307c7d34.png)
 
 
 
