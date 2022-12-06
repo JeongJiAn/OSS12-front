@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useIsFocused} from '@react-navigation/native';
-import chatrooms from './../json/chatrooms.json';
 
 function ChatList(props) {
   const isFocused = useIsFocused();
@@ -17,11 +16,11 @@ function ChatList(props) {
   const userInfo = props.userInfo;
   const [mentorPressed, setMentorPressed] = useState(true);
   const [menteePressed, setMenteePressed] = useState(true);
-  const [selectedChatroom, setSelectedChatroom] = useState();
+  const [selectedChatroom, setSelectedChatroom] = useState({});
   let mentorChatroomList = props.mentorChatroomList;
   let menteeChatroomList = props.menteeChatroomList;
 
-  useState(() => {
+  useEffect(() => {
     setSelectedChatroom();
   }, [isFocused]);
 

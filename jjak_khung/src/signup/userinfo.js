@@ -42,121 +42,6 @@ function UserInfo(props) {
     }
   };
 
-<<<<<<< HEAD
-    const UserNameBox = () => {
-        return(
-            <View style={{ marginTop:'15%' }}>
-                <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>Name</Text>
-                <TextInput 
-                    onChangeText={(text) => userName = text}
-                    style={styles.userInputBox}
-                    placeholder='ex홍길동'
-                    placeholderTextColor='#B6C2D2'
-                    autoCapitalize='none'
-                />
-            </View>
-        );
-    };
-    
-    const UserEmailBox = () => {
-        return(
-            <View style={{ marginTop:'5%' }}>
-                <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>ID(email)</Text>
-                <TextInput 
-                    style={styles.userInputBox}
-                    value={userEmail}
-                    editable={false}
-                />
-            </View>
-        );
-    };
-
-    const UserPasswordBox = () => {
-        return(
-            <View style={{ marginTop:'10%' }}>
-                <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>PassWord</Text>
-                <TextInput 
-                    onChangeText={(text) => pw = text}
-                    style={styles.userInputBox}
-                    autoCapitalize='none'
-                    secureTextEntry={true}/>
-                <Text 
-                    style={{ width:'85%' ,marginLeft: '7%', fontSize: 14, color: '#BC0000' }}>
-                        비밀번호는 영문,숫자,특수기호 중 한가지 이상으로 구성되어야 하며 8~16자리 여야 합니다.
-                </Text>
-            </View>
-        );
-    };
-
-    const UserPassWordCheckBox = () => {
-        return(
-            <View style={{ marginTop:'5%' }}>
-                <Text style={{ marginLeft: '7%', fontSize: 18, color: '#6667AB' }}>PassWord Check</Text>
-                <TextInput 
-                    onChangeText={(text) => rePw = text}
-                    style={styles.userInputBox}
-                    autoCapitalize='none'
-                    secureTextEntry={true}/>
-                {/* <Text style={{ marginLeft: '7%', color: '#BC0000' }}>비밀번호가 일치합니다</Text> */}
-            </View>
-        );
-    };
-
-    const JoinButton = () => {
-        return(
-            <TouchableOpacity
-                style={styles.joinButton}
-                onPress={() => handleJoin()}>
-                    <Text style={{ fontSize: 15, color: '#FFFFFF' }}>가입하기</Text>
-            </TouchableOpacity>
-        )
-    };
-
-    const handleJoin = async () => {
-        if (userName && userEmail && pw && rePw && pw === rePw) {
-            if (pw.length >= 8 && pw.length <= 16){
-                signinable = true;
-            }
-        }
-        if (signinable) {
-            const success = await postJoinApi();
-            if (success) {
-                navigation.reset({ routes: [{ name: 'signin' }]})
-            } else {
-                Alert.alert(
-                    '경고',
-                    '중복된 계정이 존재합니다.',
-                    [
-                        {
-                            text: "확인",
-                            style: 'cancel'
-                        }
-                    ]
-                )
-            }
-        } else {
-            Alert.alert(
-                '경고',
-                '정확한 정보를 입력해주세요.',
-                [
-                    {
-                        text: "확인",
-                        style: 'cancel'
-                    }
-                ]
-            )
-        }
-    };
-
-    return(
-        <ScrollView style={styles.signupWrap}>
-            <UserNameBox/>
-            <UserEmailBox/>
-            <UserPasswordBox/>
-            <UserPassWordCheckBox/>
-            <JoinButton/>
-        </ScrollView>
-=======
   const UserNameBox = () => {
     return (
       <View style={{marginTop: '15%'}}>
@@ -171,7 +56,6 @@ function UserInfo(props) {
           autoCapitalize="none"
         />
       </View>
->>>>>>> 2141f92e63969a4f8633944a27aea4d53b126748
     );
   };
 

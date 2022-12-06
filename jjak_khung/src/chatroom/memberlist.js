@@ -8,15 +8,13 @@ import {StyleSheet, View, Text} from 'react-native';
 
 function MemberList(props) {
   const serverUrl = props.serverUrl;
-  // 임시 데이터
 
   const [memberList, setMemberList] = useState([]);
 
   useEffect(() => {
     const getChatRoomList = async () => {
       try {
-        const callUrl =
-          serverUrl + 'chat/room/list?chatNumber=' + props.chat_number;
+        const callUrl = serverUrl + 'chat/room/list?chatNumber=' + props.chat_number;
         const getChatRoomListResponse = await fetch(callUrl);
         const getChatRoomListJson = await getChatRoomListResponse.json();
         let tempMemberList = [];

@@ -21,128 +21,6 @@ function Emailverification(props) {
   let validKey = '';
   let validationNum = '';
 
-<<<<<<< HEAD
-    const getAuthMailApi = async () => {
-        try {
-            if (!userEmail.includes('@khu.ac.kr')){
-                throw new Error('not khu email domain');
-            }
-            const callUrl = serverUrl + 'authmail?email=' + userEmail;
-            console.log(callUrl);
-            const authmailReaponse = await fetch(callUrl);
-            if (!authmailReaponse.ok) {
-                throw new Error('400 or 500 error occurred');
-            }
-            const authmailJson = await authmailReaponse.json();
-            validKey = authmailJson;
-        } catch(e) {
-            console.log(e);
-            Alert.alert(
-                '경고',
-                '유효한 경희대 메일 주소를 입력해주세요!',
-                [
-                    {
-                        text: '확인',
-                        style: 'cancel'
-                    }
-                ]
-            )
-        }
-    };
-
-    const EmailBox = () => {
-        return (
-            <TextInput
-                onChangeText={(text) => userEmail = text}
-                style={styles.emailBox}
-                placeholder='경희대학교 메일을 입력해주세요'
-                placeholderTextColor={'#B6C2D2'}
-                autoCapitalize={'none'}/>
-            );
-        };
-
-    const EmailRequireButton = () => {
-        return (
-            <TouchableOpacity
-                style={styles.requirebutton}
-                onPress={() => {
-                    eamilRequire();
-                }}>
-                <Text style={{ fontSize: 14, color: "#ffffff" }}>인증번호 요청</Text>
-            </TouchableOpacity>
-        );
-    };
-
-    const eamilRequire = async () => {
-        await getAuthMailApi();
-        console.log(validKey);
-        if (validKey) {
-            alert("인증번호가 전달되었습니다!");
-            props.setUserEmail(userEmail);
-            setEmailSent(true);
-            setValidationKey(validKey);
-        }
-    };
-
-    const VerificationNum = () => {
-        return (
-            <TextInput
-                onChangeText={(text) => validationNum = text}
-                style={styles.verificationNum}
-                placeholder='인증번호'
-                placeholderTextColor='#B6C2D2'
-                autoCapitalize='none'
-            />
-        );
-    };
-    const VerificationNumFailText = () => {
-        return (
-            <View>
-                <Text style={styles.verificationNumfailText}>
-                    {verificationNumFailText}
-                </Text>
-            </View>
-        );
-    };
-
-    const VerificationButton = () => {
-        if (emailSent) {
-            return (
-                <TouchableOpacity 
-                    style={styles.verificationButton}
-                    onPress={()=> verificaiton()}>
-                        <Text style={{fontSize:14, color:'#FFFFFF'}}>회원가입 계속하기</Text>
-                </TouchableOpacity>
-            );
-        } else {
-            return (
-                <TouchableOpacity 
-                    style={styles.unsentVerificationButton}
-                    disabled={true}
-                    onPress={()=> verificaiton()}>
-                        <Text style={{fontSize:14, color:'#FFFFFF'}}>회원가입 계속하기</Text>
-                </TouchableOpacity>
-            );
-        }
-    };
-
-    function verificaiton() {
-        if (validationNum.toString() === validationKey.toString()) {
-            navigation.navigate('userinfo');
-        } else {
-            Alert.alert(
-                '에러',
-                '인증번호가 틀렸습니다.',
-                [
-                    {
-                        text: '확인',
-                        style: 'cancel'
-                    }
-                ]
-            )
-            setVerificationNumFailText('인증번호가 일치하지 않습니다.');
-        }
-=======
   const getAuthMailApi = async () => {
     try {
       if (!userEmail.includes('@khu.ac.kr')) {
@@ -163,7 +41,6 @@ function Emailverification(props) {
           style: 'cancel',
         },
       ]);
->>>>>>> 2141f92e63969a4f8633944a27aea4d53b126748
     }
   };
 

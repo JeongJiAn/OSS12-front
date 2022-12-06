@@ -1,49 +1,65 @@
-import React, {Component, useState, useRef} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-} from 'react-native';
-
-const ChatroomFooter = props => {
-  const userInfo = props.userInfo;
-  const [messageContent, setMessageContent] = useState('');
-
-  function trySendMessage() {
-    if (messageContent !== '') {
-      setMessageContent('');
-    }
-  }
-
-  return (
-    <View style={styles.chatroomFooterWrap}>
-      <TouchableOpacity style={styles.imageSendButton}>
-        <Text>사진</Text>
-      </TouchableOpacity>
-      <View style={styles.messageInputWrap}>
-        <TextInput
-          style={styles.messageInput}
-          multiline={true}
-          onChangeText={setMessageContent}
-        />
-      </View>
-      <TouchableOpacity
-        style={styles.messageSendButton}
-        onPress={() => trySendMessage()}>
-        <Text>전송</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import io from 'socket.io-client';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 
 function ChatroomMain(props) {
   const navigation = useNavigation();
   const userInfo = props.userInfo;
+  const chatroom = props.chatroom;
   const scrollViewRef = useRef();
+  const [messageList, setMessageList] = useState([])
+  const webSocket = useRef(null);
+  let msgContent = '';
+  const [webSocketReady, setWebSocketReady] = useState(false);
+
+  useEffect(() => {
+    if (!webSocketReady) {
+      console.log(chatroom);
+      if (Object.keys(chatroom).length !== 0) {
+        console.log("in");
+        console.log(chatroom);
+        webSocket.current = io('http://107.21.124.128:23023/chat');
+        setWebSocketReady(true);
+        webSocket.current.on('connect', () => {
+          let data = {
+            type: 'Welcome',
+            name: userInfo.user_name,
+            msg: "enter",
+            room: chatroom.chat_number
+          }
+          webSocket.current.emit('welcome', data);
+          console.log('Connected Server');
+        });
+  
+        webSocket.current.on('message', e => {
+          let list = messageList;
+          list.push(e);
+          setMessageList(list);
+          forceRender();
+        });
+  
+        webSocket.current.on('disconnect', () => {
+          console.log("Disconnected");
+        });
+      }
+    }
+  })
+  
+  function forceRender() {
+    setMessageList([...messageList]);
+  }
+
+  function trySendMessage() {
+    if (msgContent !== '') {
+      let msg = {
+        name: userInfo.user_name,
+        msg: msgContent
+      }
+      webSocket.current.emit('message', msg);
+      msgContent = '';
+    }
+  }
 
   function ChatroomHeader() {
     return (
@@ -51,7 +67,12 @@ function ChatroomMain(props) {
         <View style={styles.chatroomHeader}>
           <TouchableOpacity
             style={styles.quitButton}
-            onPress={() => navigation.pop()}>
+            onPress={() => {
+                const room = {};
+                props.setChatroom(room);
+                webSocket.current.disconnect();
+                navigation.pop();
+              }}>
             <Text style={{color: '#ffffff', fontSize: 20}}>나가기</Text>
           </TouchableOpacity>
           <View
@@ -72,32 +93,59 @@ function ChatroomMain(props) {
     );
   }
 
-  function MyChat() {
+  function MyChat(msg) {
     return (
       <View style={styles.myChatWrap}>
         <View style={styles.myChat}>
           <Text>
-            asdhasiodhasoudhoashdhasiodhoashiodhaisohdioashdiohsaodjhoiashoiahsh
+            {msg.msg}
           </Text>
         </View>
       </View>
     );
   }
 
-  function OthersChat() {
+  function OthersChat(msg) {
     return (
       <View style={styles.othersChatWrap}>
         <View
           style={{backgroundColor: 'red', padding: 5, alignSelf: 'flex-start'}}>
-          <Text>test1</Text>
+          <Text>msg.name</Text>
         </View>
         <View style={styles.othersChat}>
           <Text>
-            asdhasiodhasoudhoashdhasiodhoashiodhaisohdioashdiohsaodjhoiashoiahsh
+            {msg.msg}
           </Text>
         </View>
       </View>
     );
+  }
+
+  function Chat(msg) {
+    if (msg.msg.name === userInfo.user_name) {
+      return (
+        <MyChat msg={msg.msg.msg} name={msg.msg.name}/>
+      )
+    } else {
+      return (
+        <OthersChat msg={msg.msg.msg} name={msg.msg.name}/>
+      )
+    }
+  }
+
+  function MessageList() {
+    if (messageList.length !== 0) {
+      console.log(messageList);
+      return (
+        <View>
+          {messageList.map((msg, index) => (
+            <Chat key={index} msg={msg}/>
+          ))}
+        </View>
+      )
+    } else {
+      return null;
+    }
   }
 
   function ChatArea() {
@@ -108,18 +156,38 @@ function ChatroomMain(props) {
         onContentSizeChange={() =>
           scrollViewRef.current.scrollToEnd({animated: true})
         }>
-        <MyChat />
-        <OthersChat />
-        <OthersChat />
+        <MessageList />
       </ScrollView>
     );
   }
+
+  function ChatroomFooter() {
+    return (
+      <View style={styles.chatroomFooterWrap}>
+        <TouchableOpacity style={styles.imageSendButton}>
+          <Text>사진</Text>
+        </TouchableOpacity>
+        <View style={styles.messageInputWrap}>
+          <TextInput
+            style={styles.messageInput}
+            multiline={true}
+            onChangeText={(text) => msgContent = text}
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.messageSendButton}
+          onPress={() => trySendMessage()}>
+          <Text>전송</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.chatroomWrap}>
       <ChatroomHeader />
       <ChatArea />
-      <ChatroomFooter userInfo={userInfo} />
+      <ChatroomFooter />
     </View>
   );
 }

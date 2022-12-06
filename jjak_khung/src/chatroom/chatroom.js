@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect, useRef} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import {useWindowDimensions} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -13,10 +13,19 @@ function Chatroom(props) {
   const dimensions = useWindowDimensions();
   const isLargeScreen = dimensions.width >= 768;
   const userInfo = props.userInfo;
-  const [chatroom, setChatroom] = useState([]);
+  const [chatroom, setChatroom] = useState({});
 
   useEffect(() => {
-    setChatroom(route.params);
+    console.log(chatroom);
+    setChatroom({
+      chat_number: route.params.chat_number,
+      subject_number: {
+        subject_name: route.params.subject_number.subject_name,
+        subject_number: route.params.subject_number.subject_number,
+        subject_professor: route.params.subject_number.subject_professor
+      }
+    })
+    console.log(chatroom);
   }, []);
 
   return (
@@ -31,12 +40,13 @@ function Chatroom(props) {
         drawerPosition: 'right',
       }}
       drawerContent={props => (
-        <MemberList chat_number={chatroom.chat_number} serverUrl={serverUrl} />
+        <MemberList chat_number={route.params.chat_number} serverUrl={serverUrl} />
       )}>
       <Drawer.Screen name="chatroommain" options={{headerShown: false}}>
         {props => (
           <ChatroomMain
             chatroom={chatroom}
+            setChatroom={setChatroom}
             serverUrl={serverUrl}
             userInfo={userInfo}
           />
