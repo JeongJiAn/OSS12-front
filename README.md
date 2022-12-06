@@ -44,17 +44,25 @@ npm install react-native-gesture-handler react-native-reanimated
 //dropdown picker
 npm i react-native-dropdown-picker
 ```
+react-navigation을 android에서 사용하기 위해서는 아래의 코드를 android/app/src/main/java/<your package name>/MainActivity.java 파일에 추가해주어야 한다.
+```
+// MainActivity.java 파일 상단
+import android.os.Bundle;
+// MainActivity Class 내부
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(null);
+}
+```
 
 3. React native 시작
 ```
 // Terminal 1
 npm start
 // Terminal 2 (new Terminal)
-react-native run-ios // for ios
 react-native run-android // for android
 ```
-
-   
+Application의 경우 .apk파일을 실행해주면 
    
 ## usage
 #### Flow Chart
