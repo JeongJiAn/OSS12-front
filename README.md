@@ -17,16 +17,8 @@
 
 
 ## Getting Started(Installation)
-- BE : Spring (자바 11, gradle)
 - FE : React Native (npm 8.15.0, react native 0.68.2)
-1. DB 구축
-```
-winpty mysql -u root –p
-mysql> create database db_khu;
-mysql> create user 'user01'@'%' identified by '1234';
-mysql> grant all on db_khu.* to 'user01'@'%';
-```
-2. 라이브러리 다운
+1. 라이브러리 다운
 ```
 npm installs 
 
@@ -55,7 +47,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-3. React native 시작
+2. React native 시작
 ```
 // Terminal 1
 npm start
