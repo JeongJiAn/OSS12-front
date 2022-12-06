@@ -13,7 +13,8 @@
 또한 소융대 학생들의 적극적인 이용을 기대하고자 크레딧 기능을 활용하였습니다.
 
 #### Software architecture
-![image](https://user-images.githubusercontent.com/56192209/186587539-60727a37-08da-4803-8f8f-0b92d28a391b.png) <br>
+![arc](https://user-images.githubusercontent.com/72684838/205894223-c7f62741-aa85-4351-a418-59d6b2f78d3d.png)
+ <br>
 
 
 ## Getting Started(Installation)
